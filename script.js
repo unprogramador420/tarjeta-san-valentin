@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.addEventListener('click', () => {
         if (!envelope.classList.contains('open')) {
             envelope.classList.add('open');
-            openBtn.textContent = '¡Te Amo!';
+            openBtn.textContent = '¡Cui!';
             openBtn.style.backgroundColor = '#d63031'; // Cambia a un color mas oscuro
             createHearts();
         } else {
@@ -63,4 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 });
+
 
