@@ -1,0 +1,247 @@
+:root {
+    --bg-color: #ffe6e6;
+    /* Rosa muy pálido */
+    --primary-color: #ff4d4d;
+    /* Rojo vibrante */
+    --secondary-color: #ffcccc;
+    /* Rosa claro */
+    --text-color: #4a4a4a;
+    /* Gris oscuro para texto */
+    --accent-color: #d63031;
+    /* Rojo más oscuro */
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#ffb3b3 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
+}
+
+header h1 {
+    font-family: 'Great Vibes', cursive;
+    color: var(--accent-color);
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid white;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.envelope {
+    margin-bottom: 1.5rem;
+    position: relative;
+    height: 200px;
+    /* Altura inicial del sobre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.front {
+    width: 150px;
+    height: 100px;
+    background-color: var(--primary-color);
+    position: absolute;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: transform 0.6s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Triángulo del sobre */
+.front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-top: 50px solid #d63031;
+    /* Parte superior del sobre (solapa) */
+    transform-origin: top;
+    transition: transform 0.4s ease 0.2s;
+    z-index: 3;
+}
+
+.heart-seal {
+    font-size: 2rem;
+    color: white;
+    /* O un rojo más oscuro si el sobre es claro */
+    z-index: 4;
+    animation: pulse 2s infinite;
+}
+
+.card-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none;
+    /* Se mostrará con JS */
+}
+
+.card-content h2 {
+    color: var(--primary-color);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.signature {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4);
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Clases para la animación de apertura */
+.envelope.open .front {
+    transform: scale(0);
+    /* Desaparece el sobre cerrado */
+    opacity: 0;
+}
+
+.envelope.open {
+    height: auto;
+    /* Se ajusta al contenido */
+    min-height: 200px;
+}
+
+.envelope.open .card-content {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Corazones flotantes (generados por JS) */
+.floating-heart {
+    position: fixed;
+    color: var(--primary-color);
+    font-size: 20px;
+    pointer-events: none;
+    animation: floatUp 4s linear forwards;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
