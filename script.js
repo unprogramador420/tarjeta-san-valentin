@@ -48,4 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar con algunos corazones suaves al cargar
     // createHearts(); // Descomentar si quieres corazones desde el inicio
+
+    // Interacción con la ardilla escondida
+    const hiddenSquirrel = document.getElementById('hiddenSquirrel');
+
+    hiddenSquirrel.addEventListener('click', () => {
+        hiddenSquirrel.classList.add('found');
+        alert("¡Encontraste a la ardilla escondida! 🐿️💖");
+        createHearts(); // Lluvia de corazones extra
+
+        // Quitar la clase después de la animación para que pueda saltar de nuevo
+        setTimeout(() => {
+            hiddenSquirrel.classList.remove('found');
+        }, 1000);
+    });
 });

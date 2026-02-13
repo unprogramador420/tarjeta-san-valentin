@@ -245,3 +245,56 @@ footer {
         opacity: 0;
     }
 }
+
+/* Personalized Photo */
+.personal-photo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.personal-photo:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Hidden Squirrel */
+.hidden-squirrel {
+    position: fixed;
+    bottom: -10px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s ease, bottom 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.hidden-squirrel:hover {
+    bottom: 0;
+    transform: scale(1.1);
+}
+
+.hidden-squirrel.found {
+    animation: jump 0.5s ease;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
