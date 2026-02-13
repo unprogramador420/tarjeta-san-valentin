@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.addEventListener('click', () => {
         if (!envelope.classList.contains('open')) {
             envelope.classList.add('open');
-            openBtn.textContent = '¡Cui!';
-            openBtn.style.backgroundColor = '#d63031'; // Cambia a un color mas oscuro
-            createHearts();
+            openBtn.textContent = '¡Te Quiero!';
+            openBtn.style.backgroundColor = '#fd746c'; // Cambia a Sunset Pink
+            createStars();
         } else {
             // Opcional: Cerrar la carta si se vuelve a clicar (aunque el texto cambia)
             // envelope.classList.remove('open');
@@ -15,53 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función para crear corazones flotantes
-    function createHearts() {
+    // Función para crear estrellas/cometas flotantes
+    function createStars() {
         const interval = setInterval(() => {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            heart.innerHTML = '❤️';
+            const star = document.createElement('div');
+            star.classList.add('floating-star');
+            // Randomly choose between star and comet
+            star.innerHTML = Math.random() > 0.7 ? '☄️' : '⭐';
 
             // Posición aleatoria horizontal
-            heart.style.left = Math.random() * 100 + 'vw';
+            star.style.left = Math.random() * 100 + 'vw';
 
             // Tamaño aleatorio
-            const size = Math.random() * 20 + 10;
-            heart.style.fontSize = size + 'px';
+            const size = Math.random() * 15 + 10;
+            star.style.fontSize = size + 'px';
 
             // Duración de la animación aleatoria
             const duration = Math.random() * 3 + 3; // Entre 3 y 6 segundos
-            heart.style.animationDuration = duration + 's';
+            star.style.animationDuration = duration + 's';
 
-            document.body.appendChild(heart);
+            document.body.appendChild(star);
 
-            // Eliminar el corazón después de la animación
+            // Eliminar después de la animación
             setTimeout(() => {
-                heart.remove();
+                star.remove();
             }, duration * 1000);
 
-        }, 300); // Crear un corazón cada 300ms
-
-        // Detener la creación de corazones después de unos segundos (opcional)
-        // setTimeout(() => clearInterval(interval), 10000); 
+        }, 300); // Crear una estrella cada 300ms
     }
 
     // Iniciar con algunos corazones suaves al cargar
     // createHearts(); // Descomentar si quieres corazones desde el inicio
 
-    // Interacción con la ardilla escondida
-    const hiddenSquirrel = document.getElementById('hiddenSquirrel');
 
-    hiddenSquirrel.addEventListener('click', () => {
-        hiddenSquirrel.classList.add('found');
-        alert("¡Encontraste a la ardilla escondida! 🐿️💖");
-        createHearts(); // Lluvia de corazones extra
-
-        // Quitar la clase después de la animación para que pueda saltar de nuevo
-        setTimeout(() => {
-            hiddenSquirrel.classList.remove('found');
-        }, 1000);
-    });
 });
-
-

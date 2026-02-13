@@ -1,15 +1,16 @@
 :root {
-    --bg-color: #ffe6e6;
-    /* Rosa muy pálido */
-    --primary-color: #ff4d4d;
-    /* Rojo vibrante */
-    --secondary-color: #ffcccc;
-    /* Rosa claro */
-    --text-color: #4a4a4a;
-    /* Gris oscuro para texto */
-    --accent-color: #d63031;
-    /* Rojo más oscuro */
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --bg-color: #0b1026;
+    /* Deep Night Blue */
+    --primary-color: #6c5ce7;
+    /* Indigo */
+    --secondary-color: #a29bfe;
+    /* Light Purple */
+    --text-color: #f1f2f6;
+    /* White/Grey */
+    --accent-color: #fd746c;
+    /* Sunset Pink/Red */
+    --card-bg: rgba(255, 255, 255, 0.1);
+    /* Glassmorphism */
 }
 
 body {
@@ -17,13 +18,29 @@ body {
     padding: 0;
     font-family: 'Lato', sans-serif;
     background-color: var(--bg-color);
-    background-image: radial-gradient(#ffb3b3 1px, transparent 1px);
-    background-size: 20px 20px;
+    background: linear-gradient(135deg, #0b1026 0%, #2b32b2 40%, #ff9966 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: var(--text-color);
     overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -36,10 +53,10 @@ body {
 
 header h1 {
     font-family: 'Great Vibes', cursive;
-    color: var(--accent-color);
+    color: #fff;
     font-size: 3.5rem;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 10px rgba(108, 92, 231, 0.8), 0 0 20px rgba(108, 92, 231, 0.5);
     animation: fadeInDown 1.5s ease-out;
 }
 
@@ -47,22 +64,23 @@ header h1 {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid white;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
     transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
 }
 
 .envelope {
     margin-bottom: 1.5rem;
     position: relative;
     height: 200px;
-    /* Altura inicial del sobre */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +90,8 @@ header h1 {
 .front {
     width: 150px;
     height: 100px;
-    background-color: var(--primary-color);
+    background-color: #2d3436;
+    /* Dark envelope */
     position: absolute;
     border-radius: 5px;
     display: flex;
@@ -80,7 +99,8 @@ header h1 {
     align-items: center;
     z-index: 2;
     transition: transform 0.6s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Triángulo del sobre */
@@ -93,8 +113,8 @@ header h1 {
     height: 0;
     border-left: 75px solid transparent;
     border-right: 75px solid transparent;
-    border-top: 50px solid #d63031;
-    /* Parte superior del sobre (solapa) */
+    border-top: 50px solid #6c5ce7;
+    /* Purple flap */
     transform-origin: top;
     transition: transform 0.4s ease 0.2s;
     z-index: 3;
@@ -102,10 +122,10 @@ header h1 {
 
 .heart-seal {
     font-size: 2rem;
-    color: white;
-    /* O un rojo más oscuro si el sobre es claro */
+    color: #fd79a8;
     z-index: 4;
     animation: pulse 2s infinite;
+    text-shadow: 0 0 10px rgba(253, 121, 168, 0.6);
 }
 
 .card-content {
@@ -113,14 +133,15 @@ header h1 {
     transform: translateY(20px);
     transition: all 0.5s ease;
     display: none;
-    /* Se mostrará con JS */
 }
 
 .card-content h2 {
-    color: var(--primary-color);
+    color: #ffeaa7;
+    /* Soft Yellow/Star colour */
     font-family: 'Great Vibes', cursive;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    text-shadow: 0 0 5px rgba(255, 234, 167, 0.5);
 }
 
 .card-content p {
@@ -134,42 +155,43 @@ header h1 {
     color: var(--accent-color);
     font-family: 'Great Vibes', cursive;
     font-size: 1.8rem;
+    text-shadow: 0 0 5px rgba(253, 116, 108, 0.5);
 }
 
 button {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, #6c5ce7, #fd746c);
     color: white;
     border: none;
-    padding: 10px 25px;
+    padding: 12px 30px;
     font-size: 1rem;
     border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: all 0.3s;
     font-family: 'Lato', sans-serif;
-    box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 button:hover {
-    background-color: var(--accent-color);
     transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(253, 116, 108, 0.6);
 }
 
 footer {
     margin-top: 3rem;
     font-size: 0.9rem;
-    color: #888;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Clases para la animación de apertura */
 .envelope.open .front {
     transform: scale(0);
-    /* Desaparece el sobre cerrado */
     opacity: 0;
 }
 
 .envelope.open {
     height: auto;
-    /* Se ajusta al contenido */
     min-height: 200px;
 }
 
@@ -219,15 +241,17 @@ footer {
     }
 }
 
-/* Corazones flotantes (generados por JS) */
-.floating-heart {
+/* Estrellas flotantes */
+.floating-star {
     position: fixed;
-    color: var(--primary-color);
+    color: #ffeaa7;
+    /* Star color */
     font-size: 20px;
     pointer-events: none;
     animation: floatUp 4s linear forwards;
     z-index: 1;
-    opacity: 0.7;
+    opacity: 0.8;
+    text-shadow: 0 0 5px #ffeaa7;
 }
 
 @keyframes floatUp {
@@ -241,7 +265,7 @@ footer {
     }
 
     100% {
-        transform: translateY(-10vh) scale(1.2);
+        transform: translateY(-10vh) scale(1.2) rotate(45deg);
         opacity: 0;
     }
 }
@@ -249,52 +273,16 @@ footer {
 /* Personalized Photo */
 .personal-photo {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
     height: auto;
     border-radius: 10px;
     margin: 15px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 3px solid white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     transform: rotate(-2deg);
     transition: transform 0.3s ease;
 }
 
 .personal-photo:hover {
     transform: rotate(0deg) scale(1.02);
-}
-
-/* Hidden Squirrel */
-.hidden-squirrel {
-    position: fixed;
-    bottom: -10px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    z-index: 100;
-    transition: transform 0.3s ease, bottom 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.hidden-squirrel:hover {
-    bottom: 0;
-    transform: scale(1.1);
-}
-
-.hidden-squirrel.found {
-    animation: jump 0.5s ease;
-}
-
-@keyframes jump {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-30px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
 }
