@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.addEventListener('click', () => {
         if (!envelope.classList.contains('open')) {
             envelope.classList.add('open');
-            openBtn.textContent = '¡Te Quiero!';
+            openBtn.textContent = '¡Cui!';
             openBtn.style.backgroundColor = '#fd746c'; // Cambia a Sunset Pink
             createStars();
         } else {
